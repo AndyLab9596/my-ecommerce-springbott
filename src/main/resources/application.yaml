@@ -1,0 +1,15 @@
+server:
+  port: 2424
+spring:
+  application:
+    name: "my spring-boot ecommerce"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/e-commerce-spring-boot"
+    username: root
+    password: qweasdzxc
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  signer-key: "Pnta2prEt8JHMc6SPzij2Yn5jgJMruxhn5cSmMlN01yZKzP6OS67zTiOp7xoNyjr"
