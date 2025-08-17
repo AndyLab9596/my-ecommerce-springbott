@@ -10,6 +10,7 @@ import com.andy.my.e_commerce.repositories.AddressRepository;
 import com.andy.my.e_commerce.repositories.UserRepository;
 import com.andy.my.e_commerce.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final AddressRepository addressRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public SignUpResponseDto signUp(SignUpRequestDto requestDto) {
@@ -27,6 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         var user = userMapper.fromSignUpRequestDto(requestDto);
         user.setUserRole(UserRole.USER);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         var address = user.getAddress();
 
