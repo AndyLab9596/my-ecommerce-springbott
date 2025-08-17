@@ -1,5 +1,8 @@
 package com.andy.my.e_commerce.exception;
 
+import lombok.Getter;
+
+@Getter
 public class AppException extends RuntimeException {
 
     public AppException(ErrorCode errorCode) {

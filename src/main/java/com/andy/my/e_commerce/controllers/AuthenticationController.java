@@ -1,7 +1,9 @@
 package com.andy.my.e_commerce.controllers;
 
 import com.andy.my.e_commerce.dtos.ApiResponse;
+import com.andy.my.e_commerce.dtos.requests.SignInRequestDto;
 import com.andy.my.e_commerce.dtos.requests.SignUpRequestDto;
+import com.andy.my.e_commerce.dtos.responses.SignInResponseDto;
 import com.andy.my.e_commerce.dtos.responses.SignUpResponseDto;
 import com.andy.my.e_commerce.services.AuthenticationService;
 import jakarta.validation.Valid;
@@ -25,6 +27,16 @@ public class AuthenticationController {
         return ApiResponse.<SignUpResponseDto>builder()
                 .message("sign up successfully")
                 .code(HttpStatus.CREATED.value())
+                .result(result)
+                .build();
+    }
+
+    @PostMapping(path = "/sign-in")
+    public ApiResponse<SignInResponseDto> signIn(@RequestBody @Valid SignInRequestDto requestDto) {
+        var result = authenticationService.signIn(requestDto);
+        return ApiResponse.<SignInResponseDto>builder()
+                .message("sign in successfully")
+                .code(HttpStatus.OK.value())
                 .result(result)
                 .build();
     }

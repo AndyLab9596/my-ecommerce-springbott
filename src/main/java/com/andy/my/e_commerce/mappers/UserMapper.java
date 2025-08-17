@@ -3,6 +3,7 @@ package com.andy.my.e_commerce.mappers;
 import com.andy.my.e_commerce.dtos.requests.SignUpAddressRequestDto;
 import com.andy.my.e_commerce.dtos.requests.SignUpRequestDto;
 import com.andy.my.e_commerce.dtos.responses.GetAllUsersResponseDto;
+import com.andy.my.e_commerce.dtos.responses.SignInUserResponseDto;
 import com.andy.my.e_commerce.dtos.responses.SignUpAddressResponseDto;
 import com.andy.my.e_commerce.dtos.responses.SignUpResponseDto;
 import com.andy.my.e_commerce.entities.Address;
@@ -19,4 +20,6 @@ public interface UserMapper {
     SignUpAddressResponseDto toSignUpAddressResponseDto(Address address);
 
     GetAllUsersResponseDto toGetAllUsersResponseDto(User user);
+
+    SignInUserResponseDto toSignInUserResponseDto(User user);
 }
